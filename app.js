@@ -1,7 +1,7 @@
-const _ = require('lodash');
+const {createReadStream} = require('fs');
 
-const items = [1, [2, [3, 4]]];
+const stream = createReadStream('./content/big.txt');
 
-const newItems = _.flattenDeep(items);
-
-console.log(`CLOG in "", value "newItems"`, newItems);
+stream.on('data', (result) => {
+  console.log(result);
+})
